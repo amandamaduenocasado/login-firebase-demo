@@ -1,16 +1,19 @@
 import { Route, Routes } from 'react-router-dom';
-import About from '../pages/about/About';
 import Home from '../pages/home/Home';
-import User from '../pages/user/User';
+import Login from '../pages/login/Login';
+import Profile from '../pages/profile/Profile';
+import Register from '../pages/register/Register';
+import ProtectedRoute from './ProtectedRoutes';
 
 const Router = () => {
 	return (
 		<Routes>
 			<Route path='/' element={<Home />} />
-			<Route path='/about' element={<About />} />
-			<Route path='/macarena' element={<User name='macarena' />} />
-			<Route path='/xavi' element={<User name='xavi' />} />
-			<Route path='/diego' element={<User name='diego' />} />
+			<Route path='/login' element={<Login />} />
+			<Route path='/register' element={<Register />} />
+			<Route element={<ProtectedRoute />}>
+				<Route path='/profile' element={<Profile />} />
+			</Route>
 		</Routes>
 	);
 };
